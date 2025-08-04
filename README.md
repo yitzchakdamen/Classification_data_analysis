@@ -1,7 +1,7 @@
 "# Classification_data_analysis" 
 
-Data analysis and basic data cleaning system for textual information (anti-Semitic and non-anti-Semitic tweets)
-DataAnalyzer - classifies into categories, and performs analysis on the file according to categories.
+## Data analysis and basic data cleaning system for textual information (anti-Semitic and non-anti-Semitic tweets)
+*###* DataAnalyzer - classifies into categories, and performs analysis on the file according to categories.
 DataCleaning - performs cleaning on the file.
 FileHandling - handles uploading and saving files.
 ReportBuilder - handles creating a dictionary from several dictionaries.
