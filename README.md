@@ -1,4 +1,4 @@
-"# Classification_data_analysis" 
+# Classification_data_analysis
 
 ## Data analysis and basic data cleaning system for textual information (anti-Semitic and non-anti-Semitic tweets)
 
