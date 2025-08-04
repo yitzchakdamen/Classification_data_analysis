@@ -6,10 +6,18 @@ class DataAnalyzer:
         self.df_data:pd.DataFrame = data
         self.antisemitic = antisemitic
         self.non_antisemitic = non_antisemitic
-        
-        self.df_antisemitic = self.df_data[self.df_data[classification_col_name] == self.antisemitic]
-        self.df_non_antisemitic = self.df_data[self.df_data[classification_col_name] == self.non_antisemitic]
-        self.df_unspecified = self.df_data[(self.df_data[classification_col_name] != self.antisemitic) & (self.df_data[classification_col_name] == self.non_antisemitic)]
+        self.classification_col_name = classification_col_name
+        self.df_antisemitic , self.df_non_antisemitic , self.df_unspecified = self.split_into_categories()
+    
+    def split_into_categories(self) -> tuple:
+        return (
+            self.df_data[self.df_data[self.classification_col_name] == self.antisemitic],
+            self.df_data[self.df_data[self.classification_col_name] == self.non_antisemitic],
+            self.df_data[
+                (self.df_data[self.classification_col_name] != self.antisemitic)
+                & 
+                (self.df_data[self.classification_col_name] != self.non_antisemitic)],
+        )
     
     def _average_word_length(self, df:pd.DataFrame) -> float:
         sum_df:pd.Series = df.Text.str.split()
@@ -22,7 +30,7 @@ class DataAnalyzer:
     def _most_10_common_words(self, df:pd.DataFrame) -> list:
         return pd.Series(" ".join(df.Text).split()).value_counts().head(10).to_list()
     
-    def _sum_words_capital_letters(self, df:pd.DataFrame) -> int:
+    def _sum_uppercase_words(self, df:pd.DataFrame) -> int:
         return pd.Series(" ".join(df.Text).split()).str.isupper().sum()
     
     
@@ -66,12 +74,12 @@ class DataAnalyzer:
             }
         }
 
-    def sum_words_capital_letters_by_category(self) -> dict:
+    def sum_uppercase_words_by_category(self) -> dict:
         return {
-            "capital_letters":{
-                "total": self._sum_words_capital_letters(self.df_data),
-                "antisemitic": self._sum_words_capital_letters(self.df_antisemitic),
-                "non_antisemitic": self._sum_words_capital_letters(self.df_non_antisemitic),
-                "unspecified": self._sum_words_capital_letters(self.df_unspecified),
+            "uppercase_words":{
+                "total": self._sum_uppercase_words(self.df_data),
+                "antisemitic": self._sum_uppercase_words(self.df_antisemitic),
+                "non_antisemitic": self._sum_uppercase_words(self.df_non_antisemitic),
+                "unspecified": self._sum_uppercase_words(self.df_unspecified),
             }
         }
