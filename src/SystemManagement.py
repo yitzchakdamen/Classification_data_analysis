@@ -8,7 +8,7 @@ class SystemManagement:
     
     def __init__(self, source_file_directory:str, destination_file_directory:str) -> None:
         self.file_handling = FileHandling(source_file_directory, destination_file_directory)
-        self.data = None
+        self.data:pd.DataFrame = None
     
     def upload_data_file(self, file_name) -> None:
         self.data:pd.DataFrame = self.file_handling.upload_data_file(file_name)
@@ -23,11 +23,13 @@ class SystemManagement:
                 data_analyzer.average_word_length_by_category(),
                 data_analyzer.sum_uppercase_words_by_category(),
             )
+        raise
 
     def run_cleaning(self, relevant_columns:list) -> pd.DataFrame:
         if self.data is not None:
             data_cleaning:pd.DataFrame = DataCleaning(self.data, relevant_columns).activation()
             return data_cleaning
+        raise
     
     def export_investigation(self, file_name, data_cleaning:pd.DataFrame) -> None:
         self.file_handling.saving_data_file(file_name, data_cleaning)
