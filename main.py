@@ -1,14 +1,17 @@
-from src.FileHandling import FileHandling
+from src.SystemManagement import SystemManagement
+
+
+
+if __name__ == "__main__":
+    system_management = SystemManagement(source_file_directory="data", destination_file_directory="results")
+    system_management.activation(upload_file_name="tweets_dataset.csv",
+                                cleaningd_file_name="cleaningd_tweets_dataset",
+                                analysis_results_file_name="analysis_cleaningd",
+                                relevant_columns=["Text", "Biased"])
+    
+    print(system_management.data)
 
 
 
 
 
-
-
-
-print("---- testing a ----")
-file_handling = FileHandling(r"data", r"results")
-data = file_handling.upload_data_file("tweets_dataset.csv")
-file_handling.saving_data_file("test",data)
-file_handling.saving_results_json("aa", {"aaa":444})

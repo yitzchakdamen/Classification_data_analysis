@@ -25,13 +25,13 @@ class DataAnalyzer:
     
     def _most_3_longest_tweets_text(self, df:pd.DataFrame) -> list:
         most_3_longest_tweets = df.Text.str.len().sort_values(ascending=False).head(3)
-        return df.iloc[most_3_longest_tweets.index].Text.to_list()
+        return self.df_data.iloc[most_3_longest_tweets.index].Text.to_list()
 
     def _most_10_common_words(self, df:pd.DataFrame) -> list:
-        return pd.Series(" ".join(df.Text).split()).value_counts().head(10).to_list()
+        return pd.Series(" ".join(df.Text).split()).value_counts().head(10).index.to_list()
     
     def _sum_uppercase_words(self, df:pd.DataFrame) -> int:
-        return pd.Series(" ".join(df.Text).split()).str.isupper().sum()
+        return int(pd.Series(" ".join(df.Text).split()).str.isupper().sum())
     
     
     def sum_tweets(self) -> dict:
