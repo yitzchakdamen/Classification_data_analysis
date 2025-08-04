@@ -63,10 +63,10 @@
         "unspecified": 0
     },
     "average_length": {
-        "total": 28.304422993804927,
-        "antisemitic": 23.6072,
-        "non_antisemitic": 29.33614479001933,
-        "unspecified": NaN
+        "total": 0,
+        "antisemitic": 0,
+        "non_antisemitic": 0,
+        "unspecified": 0
     },
     "uppercase_words": {
         "total": 7085,
