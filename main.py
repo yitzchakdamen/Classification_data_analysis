@@ -5,8 +5,8 @@ st.set_page_config(page_title="מערכת ניתוח טקסטים", layout="cent
 st.title("📊 מערכת ניתוח טקסטים – הפעלת עיבוד")
 
 with st.form("activation_form"):
+    
     st.header("הגדרות קלט")
-
     source_dir = st.text_input("📂 נתיב תיקיית מקור:", value="data")
     dest_dir = st.text_input("📁 נתיב תיקיית יעד:", value="results")
     upload_file_name = st.text_input("📄 שם קובץ המקור:", value="tweets_dataset")
