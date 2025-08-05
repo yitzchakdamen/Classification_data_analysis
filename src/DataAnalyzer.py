@@ -30,7 +30,8 @@ class DataAnalyzer:
         and iterates and calculates the length for each and the final average for that.
         """
         sum_df:pd.Series = df.Text.str.split()
-        return sum_df.str.len().mean() # if not pd.NaT else 0
+        mean_length = sum_df.str.len().mean()
+        return 0 if pd.isna(mean_length) else mean_length
     
     def _most_3_longest_tweets_text(self, df:pd.DataFrame) -> list:
         """

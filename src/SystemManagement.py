@@ -1,4 +1,5 @@
 import pandas as pd
+from typing import Optional
 from src.DataAnalyzer import DataAnalyzer
 from src.FileHandling import FileHandling
 from src.ReportBuilder import ReportBuilder
@@ -9,11 +10,11 @@ class SystemManagement:
     def __init__(self, source_file_directory:str, destination_file_directory:str) -> None:
         """ Defines file handling with the location of the source file folder and the destination file folder. """
         self.file_handling = FileHandling(source_file_directory, destination_file_directory)
-        self.data:pd.DataFrame = None
+        self.data: Optional[pd.DataFrame] = None
     
     def upload_data_file(self, file_name) -> None:
         """ Uploads a file by name (from the target folder) """
-        self.data:pd.DataFrame = self.file_handling.upload_data_file(file_name)
+        self.data = self.file_handling.upload_data_file(file_name)
     
     def run_analysis(self) -> dict:
         """

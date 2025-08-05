@@ -17,8 +17,16 @@ class FileHandling:
         Gets a file name and concatenates it with the source file path and uploads the file.
         """
         os.makedirs(self.source_file_directory, exist_ok=True)
-        file = os.path.join(self.source_file_directory, file_name)
+        file = os.path.join(self.source_file_directory, f"{file_name}.csv")
         return pd.read_csv(file)
+    
+    def upload_results_json(self, file_name: str) -> pd.DataFrame:
+        """
+        Gets a file name and concatenates it with the destination folder path and uploads the file as a json.
+        """
+        os.makedirs(self.destination_file_directory, exist_ok=True)
+        file = os.path.join(self.destination_file_directory, f"{file_name}.json")
+        return pd.read_json(file)
     
     def saving_data_file(self, file_name: str, data:pd.DataFrame) -> None:
         """ 

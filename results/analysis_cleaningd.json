@@ -66,7 +66,7 @@
         "total": 28.304422993804927,
         "antisemitic": 23.6072,
         "non_antisemitic": 29.33614479001933,
-        "unspecified": NaN
+        "unspecified": 0
     },
     "uppercase_words": {
         "total": 7085,
